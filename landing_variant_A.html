@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Хорошая Девочка — Путь Трансформации</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080612;
+    --bg2: #0d0a1f;
+    --neon-violet: #a855f7;
+    --neon-pink: #ec4899;
+    --neon-blue: #818cf8;
+    --text: #f8f4ff;
+    --text-muted: #c4b5fd;
+    --glass: rgba(255,255,255,0.05);
+    --glass-border: rgba(168,85,247,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background:
+      radial-gradient(ellipse at 15% 8%, rgba(124,58,237,0.22) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 22%, rgba(236,72,153,0.14) 0%, transparent 40%),
+      radial-gradient(ellipse at 50% 42%, rgba(168,85,247,0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 60%, rgba(236,72,153,0.10) 0%, transparent 40%),
+      radial-gradient(ellipse at 80% 78%, rgba(124,58,237,0.15) 0%, transparent 45%),
+      radial-gradient(ellipse at 40% 92%, rgba(0,229,255,0.05) 0%, transparent 40%),
+      linear-gradient(180deg,
+        #0e0523 0%,
+        #090615 18%,
+        #0c0820 36%,
+        #080612 52%,
+        #0f0621 68%,
+        #080514 84%,
+        #110428 100%
+      );
+    background-attachment: fixed;
+    color: var(--text);
+    overflow-x: hidden;
+    max-width: 430px;
+    margin: 0 auto;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100svh;
+    background: radial-gradient(ellipse at 50% 0%, rgba(45,10,110,0.6) 0%, transparent 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(168,85,247,0.4) 0%, transparent 70%);
+    top: -80px; left: 50%; transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(236,72,153,0.25) 0%, transparent 70%);
+    bottom: 40px; right: -40px;
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--neon-violet);
+    border: 1px solid var(--glass-border);
+    background: var(--glass);
+    padding: 8px 20px; border-radius: 50px;
+    margin-bottom: 28px; backdrop-filter: blur(8px);
+  }
+
+  .hero h1 {
+    font-size: 36px; font-weight: 900; line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .hero h1 .white { color: #fff; -webkit-text-fill-color: #fff; }
+  .hero h1 .grad {
+    background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 17px; font-weight: 500; line-height: 1.55; color: #c4b5fd;
+    margin-bottom: 36px; max-width: 340px;
+  }
+
+  .hero-cta {
+    display: inline-block; padding: 18px 32px;
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    color: #fff; border: none; border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px; font-weight: 900; letter-spacing: 0.07em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none;
+    box-shadow: 0 6px 32px rgba(236,72,153,0.45);
+    transition: transform 0.2s;
+  }
+  .hero-cta:active { transform: scale(0.97); }
+
+  .hero-scroll {
+    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    opacity: 0.4; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  }
+  .hero-scroll span {
+    display: block; width: 1px; height: 30px;
+    background: linear-gradient(to bottom, var(--neon-violet), transparent);
+    animation: scrollpulse 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollpulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+  /* ─── GLOW DIVIDER ─── */
+  .glow-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon-violet), transparent);
+    opacity: 0.4;
+  }
+
+  /* ─── VIDEO PLACEHOLDER ─── */
+  .video-section { padding: 44px 20px; background: transparent; }
+
+  .video-section-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--neon-pink); margin-bottom: 18px;
+  }
+
+  .video-placeholder {
+    position: relative;
+    width: 100%; aspect-ratio: 16/9;
+    border-radius: 16px;
+    background: rgba(168,85,247,0.04);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 14px;
+    overflow: hidden;
+  }
+  .video-placeholder::before {
+    content: '';
+    position: absolute; inset: 0; border-radius: 16px;
+    padding: 1.5px;
+    background: linear-gradient(135deg, #a855f7, #ec4899, #818cf8);
+    background-size: 300% 300%;
+    animation: neonBorder 4s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    pointer-events: none;
+  }
+  .video-placeholder::after {
+    content: ''; position: absolute; inset: 0; border-radius: 16px;
+    box-shadow: inset 0 0 50px rgba(168,85,247,0.1), 0 0 30px rgba(168,85,247,0.2);
+    pointer-events: none;
+  }
+  @keyframes neonBorder {
+    0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}
+  }
+  .video-play {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(236,72,153,0.06); border: 2px solid rgba(236,72,153,0.35);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(236,72,153,0.7);
+    position: relative; z-index: 1;
+    box-shadow: 0 0 0 1px rgba(236,72,153,0.2), 0 0 10px rgba(236,72,153,0.12);
+  }
+  .video-hint {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase;
+    color: rgba(168,85,247,0.55); position: relative; z-index: 1;
+  }
+  .vc { position: absolute; width: 16px; height: 16px; z-index: 2; }
+  .vc::before, .vc::after { content: ''; position: absolute; background: rgba(168,85,247,0.8); }
+  .vc::before { width: 2px; height: 16px; }
+  .vc::after  { width: 16px; height: 2px; }
+  .vc-tl { top: 10px; left: 10px; }
+  .vc-tr { top: 10px; right: 10px; transform: rotate(90deg); }
+  .vc-bl { bottom: 10px; left: 10px; transform: rotate(-90deg); }
+  .vc-br { bottom: 10px; right: 10px; transform: rotate(180deg); }
+
+  /* ─── TEXT BODY SECTIONS ─── */
+  .text-section { padding: 48px 24px; background: transparent; }
+  .text-section.bg2 { background: transparent; }
+
+  .yes-neon-wrap {
+    border-radius: 20px;
+    padding: 28px 20px;
+    background: #0d0a1f;
+    box-shadow:
+      0 0 0 1px rgba(236,72,153,0.45),
+      0 0 12px rgba(236,72,153,0.15),
+      0 0 28px rgba(168,85,247,0.1),
+      inset 0 0 24px rgba(168,85,247,0.04);
+  }
+
+  .body-text {
+    font-size: 16px; line-height: 1.8; color: var(--text-muted);
+  }
+  .body-text p { margin-bottom: 0; }
+  .body-text .gap { height: 16px; }
+  .body-text .gap-sm { height: 8px; }
+  .body-text strong { color: var(--text); font-weight: 700; }
+
+  .text-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(168,85,247,0.3), transparent);
+    margin: 32px 0;
+  }
+
+  /* ─── TEST ─── */
+  .test-section { padding: 48px 20px; background: transparent; }
+
+  .test-neon-wrap {
+    border-radius: 20px;
+    padding: 24px 20px;
+    background: #0d0a1f;
+    box-shadow:
+      0 0 0 1px rgba(236,72,153,0.55),
+      0 0 12px rgba(236,72,153,0.2),
+      0 0 28px rgba(168,85,247,0.12),
+      inset 0 0 24px rgba(168,85,247,0.05);
+  }
+
+  .section-label {
+    font-size: 14px; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase;
+    background: linear-gradient(90deg, #ff00cc 0%, #00e5ff 50%, #7c3aed 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    margin-bottom: 20px; line-height: 1.3;
+  }
+  .section-title {
+    font-size: 24px; font-weight: 900; line-height: 1.25;
+    margin-bottom: 20px;
+  }
+  .section-body {
+    font-size: 16px; line-height: 1.8; color: var(--text-muted); margin-bottom: 28px;
+  }
+
+  .start-btn {
+    display: block; width: 100%; padding: 16px;
+    background: linear-gradient(135deg, #7c3aed, #db2777);
+    color: white; border: none; border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; text-align: center;
+    box-shadow: 0 4px 24px rgba(124,58,237,0.4);
+    transition: transform 0.2s; text-decoration: none;
+    margin-bottom: 28px;
+  }
+  .start-btn:active { transform: scale(0.97); }
+
+  #test-questions { display: none; }
+
+  .test-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px; padding: 24px;
+    backdrop-filter: blur(12px);
+  }
+
+  .question-text {
+    font-size: 20px; font-weight: 800; margin-bottom: 20px; line-height: 1.35;
+  }
+
+  .answer-btns { display: flex; gap: 12px; }
+
+  .btn-yes, .btn-no {
+    flex: 1; padding: 16px; border-radius: 12px; border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px; font-weight: 800; cursor: pointer; transition: all 0.2s; letter-spacing: 0.05em;
+  }
+  .btn-yes { background: linear-gradient(135deg, #7c3aed, #9333ea); color: white; box-shadow: 0 4px 20px rgba(124,58,237,0.4); }
+  .btn-no  { background: var(--glass); color: var(--text-muted); border: 1px solid var(--glass-border); }
+  .btn-yes:active, .btn-no:active { transform: scale(0.97); }
+
+  .answer-reveal {
+    display: none;
+    background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(219,39,119,0.1));
+    border: 1px solid rgba(236,72,153,0.3);
+    border-radius: 12px; padding: 16px; margin-top: 16px;
+    font-size: 15px; font-weight: 600; line-height: 1.65; color: #f9a8d4;
+  }
+  .answer-reveal.show { display: block; }
+
+  .continue-btn {
+    display: none; width: 100%; margin-top: 12px; padding: 14px;
+    background: linear-gradient(135deg, #db2777, #7c3aed);
+    color: white; border: none; border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 800; cursor: pointer; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .continue-btn.show { display: block; }
+
+  .result-card {
+    display: none;
+    background: linear-gradient(135deg, rgba(124,58,237,0.25), rgba(219,39,119,0.2));
+    border: 1px solid rgba(168,85,247,0.5);
+    border-radius: 20px; padding: 32px 20px; text-align: center; margin-top: 16px;
+  }
+  .result-card.show { display: block; }
+
+  /* ─── PAIN ─── */
+  .pain-section { padding: 48px 20px; background: transparent; }
+
+  .pain-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 18px;
+    background: #100d22;
+    border-radius: 18px; margin-bottom: 12px;
+    border: 1px solid transparent;
+    box-shadow:
+      0 0 0 1px rgba(236,72,153,0.5),
+      0 0 10px rgba(236,72,153,0.15),
+      0 0 20px rgba(168,85,247,0.1),
+      inset 0 0 20px rgba(168,85,247,0.04);
+  }
+  .pain-icon {
+    width: 60px; height: 60px; flex-shrink: 0;
+    background: #1a1130; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pain-icon svg {
+    width: 34px; height: 34px;
+    filter: drop-shadow(0 0 4px #ec4899) drop-shadow(0 0 10px #a855f7);
+  }
+  .pain-text { flex: 1; }
+  .pain-item h3 {
+    font-size: 16px; font-weight: 800; margin-bottom: 6px;
+    background: linear-gradient(90deg, #ec4899, #a855f7);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .pain-item p { font-size: 14px; line-height: 1.6; color: var(--text); }
+
+  /* ─── STEPS SECTION ─── */
+  .steps-header-section {
+    padding: 48px 24px; background: transparent;
+  }
+
+  .accordion-item {
+    border-radius: 16px; overflow: hidden; margin-bottom: 12px;
+    background: #100d22; backdrop-filter: blur(8px);
+    box-shadow:
+      0 0 0 1px rgba(236,72,153,0.45),
+      0 0 10px rgba(236,72,153,0.12),
+      0 0 22px rgba(168,85,247,0.08);
+  }
+  .accordion-header {
+    width: 100%; background: none; border: none;
+    padding: 18px 20px;
+    display: flex; align-items: center; gap: 14px;
+    cursor: pointer; text-align: left; font-family: 'Montserrat', sans-serif;
+  }
+  .acc-num {
+    font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--neon-pink); flex-shrink: 0; min-width: 52px;
+  }
+  .acc-title-col { flex: 1; }
+  .acc-step-name {
+    font-size: 16px; font-weight: 900; color: var(--text); text-transform: uppercase;
+    display: block; margin-bottom: 2px;
+  }
+  .acc-chit {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    background: linear-gradient(90deg, #a855f7, #ec4899);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .acc-arrow {
+    width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); transition: transform 0.3s; flex-shrink: 0;
+  }
+  .accordion-item.open .acc-arrow { transform: rotate(180deg); }
+
+  .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .accordion-item.open .accordion-body { max-height: 600px; }
+
+  .acc-content { padding: 0 20px 24px; font-size: 14px; line-height: 1.75; color: var(--text-muted); }
+  .acc-content p { margin-bottom: 12px; }
+
+  .placeholder-block {
+    padding: 18px; border-radius: 10px;
+    background: rgba(168,85,247,0.05);
+    border: 1px dashed rgba(168,85,247,0.2);
+    font-size: 13px; color: rgba(168,85,247,0.4);
+    font-style: italic; margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .want-btn {
+    display: block; width: 100%; padding: 16px;
+    background: linear-gradient(135deg, #7c3aed, #db2777);
+    color: white; border: none; border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px; font-weight: 800; cursor: pointer; text-align: center;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    box-shadow: 0 4px 24px rgba(124,58,237,0.4);
+    transition: transform 0.2s; text-decoration: none;
+  }
+  .want-btn:active { transform: scale(0.97); }
+
+  .bonus-row {
+    margin-top: 16px; padding: 16px;
+    background: rgba(168,85,247,0.08);
+    border-radius: 12px; border: 1px dashed rgba(168,85,247,0.3);
+    font-size: 14px; line-height: 1.7; color: var(--text-muted);
+  }
+  .bonus-row p { margin-bottom: 12px; }
+  .bonus-btn {
+    display: block; width: 100%; padding: 14px;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 800; color: var(--neon-violet);
+    text-align: center; text-transform: uppercase; letter-spacing: 0.08em;
+    cursor: pointer; text-decoration: none;
+  }
+
+  .gift-block {
+    margin: 28px 0 0;
+    padding: 24px;
+    background: #100d22;
+    border-radius: 16px;
+    font-size: 15px; line-height: 1.75; color: var(--text);
+    box-shadow:
+      0 0 0 1px rgba(236,72,153,0.45),
+      0 0 10px rgba(236,72,153,0.12),
+      0 0 22px rgba(168,85,247,0.08);
+  }
+  .gift-block p { margin-bottom: 12px; }
+
+  /* ─── SERVICES ─── */
+  .services-section { padding: 48px 20px; background: transparent; }
+
+  .service-card {
+    background: #100d22;
+    border-radius: 20px; padding: 24px; margin-bottom: 16px;
+    position: relative; overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(236,72,153,0.45),
+      0 0 10px rgba(236,72,153,0.12),
+      0 0 22px rgba(168,85,247,0.08);
+  }
+  .service-card::before {
+    content: ''; position: absolute;
+    top: -1px; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, #7c3aed, #db2777);
+  }
+  .service-price {
+    font-size: 30px; font-weight: 900;
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    margin-bottom: 6px;
+  }
+  .service-name { font-size: 16px; font-weight: 800; margin-bottom: 10px; }
+  .service-desc { font-size: 14px; line-height: 1.65; color: var(--text-muted); margin-bottom: 16px; }
+
+  /* ─── SOCIAL ─── */
+  .social-section {
+    padding: 48px 20px;
+    background: transparent;
+    text-align: center;
+  }
+  .social-links { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+  .social-link {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px 20px;
+    background: #100d22;
+    border-radius: 14px; color: var(--text); text-decoration: none;
+    font-size: 15px; font-weight: 700; transition: all 0.2s;
+    box-shadow:
+      0 0 0 1px rgba(236,72,153,0.45),
+      0 0 10px rgba(236,72,153,0.12),
+      0 0 22px rgba(168,85,247,0.08);
+  }
+  .social-link:active { background: rgba(168,85,247,0.1); }
+  .sl-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .sl-tg { background: linear-gradient(135deg, #0088cc, #7c3aed); }
+  .sl-ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+  .sl-yt { background: linear-gradient(135deg, #db2777, #ff0000); }
+
+  /* ─── FOOTER ─── */
+  footer { padding: 36px 20px; text-align: center; border-top: 1px solid var(--glass-border); background: transparent; }
+  footer p { font-size: 12px; color: var(--text-muted); line-height: 1.65; }
+  .footer-logo {
+    font-size: 22px; font-weight: 900;
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-badge">✦ Трансформационная программа</div>
+  <h1><span class="white">Быстрая помощь для </span><span class="grad">хороших девочек, которые задолбались</span></h1>
+  <p class="hero-sub">3 простых шага + секретная техника, чтобы вернуть себя себе и начать жить своей жизнью</p>
+  <a href="#test" class="hero-cta">👅 Высунуть язык и начать</a>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ═══ VIDEO 1 ═══ -->
+<section class="video-section">
+  <div class="video-placeholder">
+    <div class="video-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><polygon points="6,4 20,12 6,20" fill="rgba(236,72,153,0.75)"/></svg></div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<section class="text-section" style="text-align:center; padding: 32px 28px;">
+  <p style="font-size:18px; font-weight:700; line-height:1.5; color:#fff;">
+    Вначале давайте проверим насколько вы <span style="background:linear-gradient(90deg,#ff00cc,#00e5ff,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">«хорошая девочка»</span>.<br>Вдруг вы притворяетесь 😉
+  </p>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ═══ TEST ═══ -->
+<section class="test-section" id="test">
+<div class="test-neon-wrap">
+  <div class="section-label">✦ Тест</div>
+  <div class="section-body">
+    Всего лишь 5 вопросов.<br><br>
+    Отвечайте «да», если согласны с утверждением и «нет» если не согласны.
+  </div>
+
+  <button class="start-btn" id="start-btn" onclick="startTest()">Начать</button>
+
+  <div id="test-questions">
+    <div class="test-card">
+      <div id="q1">
+        <div class="question-text">«Я эмпатичная!»</div>
+        <div class="answer-btns">
+          <button class="btn-yes" onclick="answer(1,'yes')">ДА</button>
+          <button class="btn-no"  onclick="answer(1,'no')">НЕТ</button>
+        </div>
+        <div class="answer-reveal" id="r1-yes">НЕТ! Это не «эмпатия». Вас просто приучили впитывать чужой негатив как губка, работая бесплатным психологом для всех вокруг.</div>
+        <button class="continue-btn" id="c1" onclick="nextQ(2)">Продолжить →</button>
+      </div>
+      <div id="q2" style="display:none">
+        <div class="question-text">«Я добрая!»</div>
+        <div class="answer-btns">
+          <button class="btn-yes" onclick="answer(2,'yes')">ДА</button>
+          <button class="btn-no"  onclick="answer(2,'no')">НЕТ</button>
+        </div>
+        <div class="answer-reveal" id="r2-yes">Ошибочка! Вы просто не умеете говорить слово «нет», поэтому на вас ездят все, кому не лень, от начальства до дальних знакомых.</div>
+        <button class="continue-btn" id="c2" onclick="nextQ(3)">Продолжить →</button>
+      </div>
+      <div id="q3" style="display:none">
+        <div class="question-text">«Со мной комфортно»</div>
+        <div class="answer-btns">
+          <button class="btn-yes" onclick="answer(3,'yes')">ДА</button>
+          <button class="btn-no"  onclick="answer(3,'no')">НЕТ</button>
+        </div>
+        <div class="answer-reveal" id="r3-yes">О, да! Ведь ради чужого спокойствия вы затыкаете собственное мнение глубоко внутрь, лишь бы не спровоцировать конфликт.</div>
+        <button class="continue-btn" id="c3" onclick="nextQ(4)">Продолжить →</button>
+      </div>
+      <div id="q4" style="display:none">
+        <div class="question-text">«Я всем помогаю»</div>
+        <div class="answer-btns">
+          <button class="btn-yes" onclick="answer(4,'yes')">ДА</button>
+          <button class="btn-no"  onclick="answer(4,'no')">НЕТ</button>
+        </div>
+        <div class="answer-reveal" id="r4-yes">Увы… вы бросаетесь спасать чужие жизни по первому свистку, пока ваша собственная летит к чертям.</div>
+        <button class="continue-btn" id="c4" onclick="nextQ(5)">Продолжить →</button>
+      </div>
+      <div id="q5" style="display:none">
+        <div class="question-text">«Я никогда никого не обременяю»</div>
+        <div class="answer-btns">
+          <button class="btn-yes" onclick="answer(5,'yes')">ДА</button>
+          <button class="btn-no"  onclick="answer(5,'no')">НЕТ</button>
+        </div>
+        <div class="answer-reveal" id="r5-yes">Нашли чем гордиться… Вы просто тащите всё на себе, боясь попросить о помощи, чтобы никто, не дай бог, не подумал, что вы «недостаточно хорошая».</div>
+        <button class="continue-btn" id="c5" onclick="showResult()">Получить результат</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="result-card" id="result-card">
+    <div style="font-size:52px;margin-bottom:14px">👑</div>
+    <div style="font-size:18px;font-weight:900;margin-bottom:10px;color:#f9a8d4">Поздравляю!</div>
+    <div style="font-size:15px;font-weight:800;color:#a855f7;text-transform:uppercase;letter-spacing:0.1em">Вам присваивается титул ХОРОШАЯ ДЕВОЧКА.</div>
+  </div>
+</div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ═══ PAIN ═══ -->
+<section class="pain-section">
+  <p style="font-size:20px;font-weight:900;margin-bottom:24px;line-height:1.3;background:linear-gradient(90deg,#ff00cc 0%,#00e5ff 50%,#7c3aed 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Чем вы платите за титул «хорошая девочка»?</p>
+
+  <div class="pain-item">
+    <div class="pain-icon">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="ng1" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#f472b6"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs>
+        <g stroke="url(#ng1)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="16" y1="3" x2="16" y2="29"/>
+          <path d="M11 9C11 6 16 6 16 6C21 6 21 10 21 10C21 14 16 14 16 14C21 14 21 18 21 18C21 22 16 22 16 22C11 22 11 19 11 19"/>
+        </g>
+      </svg>
+    </div>
+    <div class="pain-text">
+      <h3>Хронической нехваткой денег.</h3>
+      <p>Так как вы стесняетесь просить достойную оплату, работаете за троих, а получаете копейки, боясь заявить о своей ценности.</p>
+    </div>
+  </div>
+
+  <div class="pain-item">
+    <div class="pain-icon">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="ng2" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#f472b6"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs>
+        <g stroke="url(#ng2)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 27L4 17C1 11 7 6 12 10L16 14"/>
+          <path d="M16 27L28 17C31 11 25 6 20 10L16 14"/>
+          <path d="M16 14L13 19L19 20L16 27"/>
+        </g>
+      </svg>
+    </div>
+    <div class="pain-text">
+      <h3>Изматывающими отношениями.</h3>
+      <p>Ведь вокруг вас вечно вьются домашние тираны, нарциссы, маменькины сынки или токсичные люди, которые привыкли только брать.</p>
+    </div>
+  </div>
+
+  <div class="pain-item">
+    <div class="pain-icon">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="ng3" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#f472b6"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs>
+        <g stroke="url(#ng3)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="16" cy="11" r="6"/>
+          <path d="M4 29C4 22 9 19 16 19C23 19 28 22 28 29"/>
+        </g>
+      </svg>
+    </div>
+    <div class="pain-text">
+      <h3>Тотальным недовольством собой и вечным «самозванцем».</h3>
+      <p>Потому что, сколько бы вы ни учились и ни делали, внутри продолжает сидеть мерзкий голосок, который шепчет: «Ты всё ещё недостаточно хороша».</p>
+    </div>
+  </div>
+
+  <div class="pain-item">
+    <div class="pain-icon">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="ng4" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#f472b6"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs>
+        <g stroke="url(#ng4)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="16" cy="13" rx="9" ry="10"/>
+          <line x1="16" y1="23" x2="16" y2="29"/>
+          <line x1="11" y1="29" x2="21" y2="29"/>
+        </g>
+      </svg>
+    </div>
+    <div class="pain-text">
+      <h3>Вечной войной со своим телом.</h3>
+      <p>Неидеальный вес, быстрое старение и психосоматика - это физический крик вашего тела, зажатого в тиски вечного контроля и стресса.</p>
+    </div>
+  </div>
+
+  <div class="pain-item">
+    <div class="pain-icon">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="ng5" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#f472b6"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs>
+        <g stroke="url(#ng5)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="7" y="7" width="6" height="18" rx="2"/>
+          <rect x="19" y="7" width="6" height="18" rx="2"/>
+        </g>
+      </svg>
+    </div>
+    <div class="pain-text">
+      <h3>Запретом на собственную жизнь.</h3>
+      <p>Ваши истинные желания стоят на вечной паузе, пока вы обслуживаете чужие интересы и чужие «хочу».</p>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ═══ YES TRANSITION ═══ -->
+<section class="text-section bg2" id="yes-block">
+<div class="yes-neon-wrap">
+  <div class="body-text">
+    <p>Можно ли это исправить! И стать менее «хорошей»?</p>
+    <p>И может даже получить высший титул «НЕ хорошей девочки»?, которая берет лучшее от жизни?</p>
+    <div class="gap"></div>
+    <p style="font-size:64px;font-weight:900;line-height:1;background:linear-gradient(135deg,#f472b6,#a855f7,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-2px;filter:drop-shadow(0 0 20px rgba(168,85,247,0.5))">ДА!</p>
+    <div class="gap"></div>
+    <p>Высуньте для начала ещё раз язык и давайте начинать путь трансформации!</p>
+    <div class="gap"></div>
+    <p>Нам предстоит пройти всего лишь три шага + секретная техника и бонусом станет возможность спокойно и уверенно программировать свою самую счастливую реальность.</p>
+  </div>
+</div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ═══ VIDEO 2 ═══ -->
+<section class="video-section">
+  <div class="video-placeholder">
+    <div class="video-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><polygon points="6,4 20,12 6,20" fill="rgba(236,72,153,0.75)"/></svg></div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ═══ STEPS ═══ -->
+<section class="steps-header-section" id="steps">
+  <div class="section-label">✦ 3 ПРОСТЫХ ТРЕНИНГА + 1 СЕКРЕТНАЯ ТЕХНИКА</div>
+  <div class="body-text" style="margin-bottom:28px">
+    <p>Как Вы думаете, кто на свете самый энергичный? Ребёнок, конечно! Он не боится упасть, ошибиться и просто берет от жизни то, что хочет. А ещё он любит игрушки! Ведь через яркие, расслабляющие образы он учится и впитывает всё в разы быстрее.</p>
+    <div class="gap"></div>
+    <p>Чтобы ускорить ваш путь я дам вам игрушку.  Интерактивную авторскую неоновую колоду таро «Плыви или Утони».</p>
+    <div class="gap"></div>
+    <p>А её  арканы: Шут, Дьявол, Императрица и, наконец, МАГиня -  станут ускоряющими чит кодами.</p>
+  </div>
+
+  <!-- ШАГ 1 -->
+  <div class="accordion-item" id="acc1">
+    <button class="accordion-header" onclick="toggleAcc('acc1')">
+      <div class="acc-num">ШАГ 1</div>
+      <div class="acc-title-col">
+        <span class="acc-step-name">ЭНЕРГИЯ</span>
+        <span class="acc-chit">Чит код ШУТ</span>
+      </div>
+      <div class="acc-arrow">▼</div>
+    </button>
+    <div class="accordion-body">
+      <div class="acc-content">
+        <div class="placeholder-block">Тут будет блок с текстом</div>
+        <a href="#" class="want-btn">ХОЧУ!</a>
+        <div class="bonus-row">
+          <p>Купите сегодня и получите в подарок доступ к виртуальному помошнику, который поможет снять тревогу прямо сейчас!</p>
+          <a href="#" class="bonus-btn">УЗНАТЬ БОЛЬШЕ</a>
+          <div class="placeholder-block" style="margin-top:12px;margin-bottom:0">Тут будет открываться текст с описанием гадательного бота</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ШАГ 2 -->
+  <div class="accordion-item" id="acc2">
+    <button class="accordion-header" onclick="toggleAcc('acc2')">
+      <div class="acc-num">ШАГ 2</div>
+      <div class="acc-title-col">
+        <span class="acc-step-name">ЭМОЦИИ</span>
+        <span class="acc-chit">Чит код ДЬЯВОЛ</span>
+      </div>
+      <div class="acc-arrow">▼</div>
+    </button>
+    <div class="accordion-body">
+      <div class="acc-content">
+        <div class="placeholder-block">Тут будет блок с текстом</div>
+        <a href="#" class="want-btn">ХОЧУ!</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ШАГ 3 -->
+  <div class="accordion-item" id="acc3">
+    <button class="accordion-header" onclick="toggleAcc('acc3')">
+      <div class="acc-num">ШАГ 3</div>
+      <div class="acc-title-col">
+        <span class="acc-step-name">ДЕНЬГИ</span>
+        <span class="acc-chit">Чит код ИМПЕРАТРИЦА</span>
+      </div>
+      <div class="acc-arrow">▼</div>
+    </button>
+    <div class="accordion-body">
+      <div class="acc-content">
+        <div class="placeholder-block">Тут будет блок с текстом</div>
+        <a href="#" class="want-btn">ХОЧУ!</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- СЕКРЕТНАЯ ТЕХНИКА -->
+  <div class="accordion-item" id="acc4">
+    <button class="accordion-header" onclick="toggleAcc('acc4')">
+      <div class="acc-num" style="color:var(--neon-violet)">СЕКРЕТ</div>
+      <div class="acc-title-col">
+        <span class="acc-step-name">ПРОГРАММИРОВАНИЕ БУДУЩЕГО</span>
+        <span class="acc-chit">Чит код МАГиня</span>
+      </div>
+      <div class="acc-arrow">▼</div>
+    </button>
+    <div class="accordion-body">
+      <div class="acc-content">
+        <div class="placeholder-block">Тут будет блок с текстом</div>
+        <a href="#" class="want-btn">ХОЧУ!</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- GIFT -->
+  <div class="gift-block">
+    <p>👇</p>
+    <p>Для счастливых обладателей всех тренингов подготовлен жирный подарок!</p>
+    <p>Физическая колода уникального неонового Таро «Плыви или Утони»</p>
+    <a href="#" class="bonus-btn" style="margin-top:4px">Узнать больше</a>
+    <div class="placeholder-block" style="margin-top:12px;margin-bottom:0">Тут будет открываться текст с описанием колоды.</div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="services-section">
+  <div class="section-label">✦ Дополнительные услуги</div>
+
+  <div class="service-card">
+    <div class="service-name">Частная терапевтическая консультация</div>
+    <div class="service-price">1000 евро.</div>
+    <div class="placeholder-block service-desc">Тут будет блок с описанием</div>
+  </div>
+
+  <div class="service-card">
+    <div class="service-name">Групповое консультирование</div>
+    <div class="service-price" style="font-size:20px;margin-bottom:4px">4 встречи в мини группах до 10 человек.</div>
+    <div class="service-price" style="font-size:28px">100 евро</div>
+    <div class="placeholder-block service-desc">Тут будет блок с описанием</div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ═══ SOCIAL ═══ -->
+<section class="social-section">
+  <div class="social-links">
+    <a href="#" class="social-link">
+      <div class="sl-icon sl-tg">✈️</div>
+      <span>Telegram</span>
+      <span style="margin-left:auto;font-size:13px;color:var(--text-muted)">→</span>
+    </a>
+    <a href="#" class="social-link">
+      <div class="sl-icon sl-ig">📸</div>
+      <span>Instagram</span>
+      <span style="margin-left:auto;font-size:13px;color:var(--text-muted)">→</span>
+    </a>
+    <a href="#" class="social-link">
+      <div class="sl-icon sl-yt">▶️</div>
+      <span>YouTube</span>
+      <span style="margin-left:auto;font-size:13px;color:var(--text-muted)">→</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">✦ SOS Magic</div>
+  <p>© 2025 SOS Magic. Все права защищены.</p>
+</footer>
+
+<script>
+  function startTest() {
+    document.getElementById('start-btn').style.display = 'none';
+    document.getElementById('test-questions').style.display = 'block';
+  }
+  function answer(qNum, val) {
+    const block = document.getElementById('q' + qNum);
+    block.querySelectorAll('.btn-yes, .btn-no').forEach(b => { b.disabled = true; b.style.opacity = '0.5'; });
+    if (val === 'yes') document.getElementById('r' + qNum + '-yes').classList.add('show');
+    document.getElementById('c' + qNum).classList.add('show');
+  }
+  function nextQ(num) {
+    document.getElementById('q' + (num - 1)).style.display = 'none';
+    document.getElementById('q' + num).style.display = 'block';
+  }
+  function showResult() {
+    document.getElementById('q5').style.display = 'none';
+    document.querySelector('.test-card').style.display = 'none';
+    const card = document.getElementById('result-card');
+    card.classList.add('show');
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  function toggleAcc(id) {
+    const item = document.getElementById(id);
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.accordion-item').forEach(a => a.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
